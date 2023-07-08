@@ -130,10 +130,6 @@
 
 - [数据结构与算法实战](./workspace/argo-master)
 
-### Git
-
-[Git使用手册](./workspace/git)
-
 
 
 ### Protobuf
