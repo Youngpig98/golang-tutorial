@@ -16,16 +16,15 @@ var getSquareRoot2 = func(x float64) float64 {
 // define a function type
 type callback_func func(int) int
 
-
 // function calValue accepts a function variable cb as its second argument
-func calValue(x int, cb callback_func) int{
+func calValue(x int, cb callback_func) int {
 	fmt.Println("[func|calValue]")
 	return cb(x)
 }
 
 func realFunc(x int) int {
 	fmt.Println("[func|realFunc]callback function")
-	return x*x
+	return x * x
 }
 
 func main() {
@@ -38,4 +37,5 @@ func main() {
 	value := 81
 	result3 := calValue(value, realFunc) // use function realFunc as argument of calValue
 	fmt.Println("result3=", result3)
+
 }

@@ -129,17 +129,17 @@
     fmt.Println("array2=", array2)
     ```
 
-  * append赋值，只能对slice切片类型使用append，不能对数组使用append。参见后面lesson9里的[slice类型介绍](../lesson13)
+  * **append赋值，只能对切片(slice)类型使用append，不能对数组使用append**。参见后面lesson9里的[slice类型介绍](../lesson13)
 
     ```go
-    twoDimArray := [][]int{}
+    twoDimSlice := [][]int{}
     row1 := []int{1,2,3}
     row2 := []int{4,5}
-    twoDimArray = append(twoDimArray, row1)
-    fmt.Println("twoDimArray=", twoDimArray)
+    twoDimSlice = append(twoDimSlice, row1)
+    fmt.Println("twoDimSlice=", twoDimSlice)
     
-    twoDimArray = append(twoDimArray, row2)
-    fmt.Println("twoDimArray=", twoDimArray)
+    twoDimSlice = append(twoDimSlice, row2)
+    fmt.Println("twoDimSlice=", twoDimSlice)
     ```
 
 * 访问二维数组
@@ -201,19 +201,19 @@
   * slice类型的每一维度的大小可以不相同，比如下例里的第0行size是3，第1行size是2。如果直接访问twoDimArray\[2][2]会报错。slice类型的介绍参见[lesson13](../lesson13)
 
     ```go
-    twoDimArray := [][]int{}
+    twoDimSlice := [][]int{}
     row1 := []int{1,2,3}
     row2 := []int{4,5}
-    twoDimArray = append(twoDimArray, row1)
-    fmt.Println("twoDimArray=", twoDimArray)
+    twoDimSlice = append(twoDimSlice, row1)
+    fmt.Println("twoDimSlice=", twoDimSlice)
     
-    twoDimArray = append(twoDimArray, row2)
-    fmt.Println("twoDimArray=", twoDimArray)
+    twoDimSlice = append(twoDimSlice, row2)
+    fmt.Println("twoDimSlice=", twoDimSlice)
     ```
   
 * 数组作为函数参数进行传递
 
-  * 如果数组作为函数参数，实参和形参的定义必须相同，要么都是长度相同的数组，要么都是slice类型。如果实参和形参的类型一个是数组，一个是slice，或者实参和形参都是数组但是长度不一致都会编译报错
+  * 如果数组作为函数参数，实参和形参的定义必须相同，要么都是长度相同的数组，要么都是slice类型。**如果实参和形参的类型一个是数组，一个是slice，或者实参和形参都是数组但是长度不一致都会编译报错**。
   
     ```go
     package main
@@ -243,7 +243,7 @@
         ans := sum(a, 5)
         fmt.Println("ans=", ans)
         
-        b := []int{1, 2, 3, 4, 5}
+        b := []int{1, 2, 3, 4, 5}   // type of b: []int   b是切片
         ans2 := sumSlice(b, 5)
         fmt.Println("ans2=", ans2)
         
@@ -272,9 +272,9 @@
           array[0] = 10
       }
       
-      // changeArray3可以改变实参的值
-      func changeArray3(array []int) {
-          array[0] = 10
+      // changeSlice3可以改变实参的值
+      func changeSlice3(slice []int) {
+          slice[0] = 10
       }
       
       param := [3]int{1,2,3}
@@ -283,9 +283,9 @@
       changeArray2(&param)
       fmt.Println("param=", param) // param= [10 2 3]
       
-      sliceArray := []int{1,2,3}
-      changeArray3(sliceArray)
-      fmt.Println("sliceArray=", sliceArray) // sliceArray= [10 2 3]
+      slice1 := []int{1,2,3}
+      changeArray3(slice1)
+      fmt.Println("slice1=", slice1) // slice1= [10 2 3]
       ```
     
       
