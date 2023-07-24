@@ -129,7 +129,7 @@
     fmt.Println("array2=", array2)
     ```
 
-  * **append赋值，只能对切片(slice)类型使用append，不能对数组使用append**。参见后面lesson9里的[slice类型介绍](../lesson13)
+  * **append赋值，只能对切片(slice)类型使用append，不能对数组使用append**。参见后面lesson9里的[slice类型介绍](../lesson9)
 
     ```go
     twoDimSlice := [][]int{}
@@ -198,7 +198,7 @@
   
 * 注意事项
 
-  * slice类型的每一维度的大小可以不相同，比如下例里的第0行size是3，第1行size是2。如果直接访问twoDimArray\[2][2]会报错。slice类型的介绍参见[lesson13](../lesson13)
+  * slice类型的每一维度的大小可以不相同，比如下例里的第0行size是3，第1行size是2。如果直接访问twoDimArray\[2][2]会报错。slice类型的介绍参见[lesson9](../lesson9)
 
     ```go
     twoDimSlice := [][]int{}

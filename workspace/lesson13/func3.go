@@ -18,4 +18,9 @@ func main() {
 	result2 := sub(1, 2)
 	/*输出结果：3 -1*/
 	fmt.Println(result1, result2)
+
+	result := func(a string, b string) string {
+		return a + b
+	}("hello", "world")
+	fmt.Println(result)
 }
