@@ -140,8 +140,8 @@
 
 ### Docker/K8s
 
-* [Docker教程](https://github.com/Youngpig1998/docker-tutorial)
-* [Kubernetes教程](https://github.com/Youngpig1998/KuberneteCluster-built)
+* [Docker教程](https://github.com/Youngpig98/docker-tutorial)
+* [Kubernetes教程](https://github.com/Youngpig98/Kubernetes-tutorial)
 
 ### Prometheus
 
@@ -150,8 +150,7 @@
 
 ### Go Operator
 
-- [cp4d-audit-webhook-operator](https://github.com/Youngpig1998/cp4d-audit-webhook-operator)
-- [HCA-Operator](https://github.com/Youngpig1998/HCA-Operator)
+- [cp4d-audit-webhook-operator]()
 
 ## Go Book
 
