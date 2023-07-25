@@ -1,8 +1,10 @@
 package main
 
-import "fmt"
 // import "time"
-import "sync"
+import (
+	"fmt"
+	"sync"
+)
 
 var sum int = 0
 var wg sync.WaitGroup
@@ -20,11 +22,12 @@ func main() {
 
 	wg.Add(N)
 
-	for i:=0; i<N; i++ {
+	for i := 0; i < N; i++ {
 		go add()
 	}
 
 	wg.Wait()
+
+	fmt.Println("sum=", sum)
 	
-	fmt.Println("sum=", sum)	
 }

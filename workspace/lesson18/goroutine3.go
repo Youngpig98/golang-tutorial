@@ -8,12 +8,15 @@ func main() {
 	ch <- 10
 	ch <- 20
 	/*
-	如果添加下面这行代码，就会一直阻塞，因为缓冲区已满，运行会报错
-	fatal error: all goroutines are asleep - deadlock!
-	
-	ch <- 30
+		如果添加下面这行代码，就会一直阻塞，因为缓冲区已满，运行会报错
+		fatal error: all goroutines are asleep - deadlock!
+
+		ch <- 30
 	*/
-	
+	close(ch)
 	fmt.Println(<-ch) // 10
 	fmt.Println(<-ch) // 20
+	fmt.Println(<-ch) // 不close channel的话会造成阻塞
+	fmt.Println(<-ch) // 0
+
 }

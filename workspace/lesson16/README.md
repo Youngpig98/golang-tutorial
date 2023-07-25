@@ -154,6 +154,51 @@ func main() {
   }
   ```
 
+## 结构体中包含接口
+
+​	在Go语言中，结构体是一种自定义的复合数据类型，可以包含不同类型的字段。接口是一种定义了一组方法签名的抽象类型。结构体可以包含接口类型的字段，这样可以实现对接口的组合和扩展。
+
+​	下面是一个示例代码，展示了一个包含接口字段的结构体：
+
+```go
+package main
+
+import "fmt"
+
+// 定义一个接口
+type Speaker interface {
+	Speak()
+}
+
+// 定义一个实现了 Speaker 接口的结构体
+type Dog struct{}
+
+func (d Dog) Speak() {
+	fmt.Println("Woof!")
+}
+
+// 定义一个结构体，包含接口类型的字段
+type AnimalShelter struct {
+	Pet Speaker
+}
+
+func main() {
+	// 创建一个 AnimalShelter 实例，并设置 Pet 字段为 Dog 类型的实例
+	shelter := AnimalShelter{
+		Pet: Dog{},
+	}
+
+	// 调用 Pet 字段的 Speak 方法
+	shelter.Pet.Speak() // 输出: Woof!
+}
+
+```
+
+​	在上面的示例中，结构体 `AnimalShelter` 包含了一个接口类型的字段 `Pet`，该字段可以存储任何实现了 `Speaker` 接口的类型。在 `main` 函数中，我们创建了一个 `AnimalShelter` 实例，并将 `Pet` 字段设置为 `Dog` 类型的实例。然后，我们调用 `Pet` 字段的 `Speak` 方法，输出了 "Woof!"。
+
+​	通过在结构体中包含接口类型的字段，可以实现对接口的多态性和灵活性，使得结构体可以根据需要持有不同类型的对象，并调用它们的方法。
+
+
 
 ## 可见性
 

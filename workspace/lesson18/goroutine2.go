@@ -5,23 +5,30 @@ import "time"
 
 type Cat struct {
 	name string
-	age int
+	age  int
 }
 
 func fetchChannel(ch chan Cat) {
-	value := <- ch
+	value := <-ch
 	fmt.Printf("type: %T, value: %v\n", value, value)
 }
-
 
 func main() {
 	ch := make(chan Cat)
 	a := Cat{"yingduan", 1}
+
+	//不能放在fetchChannel前面，因为这个channel是零缓存
+	//ch <- a
+
 	// 启动一个goroutine，用于从ch这个通道里获取数据
 	go fetchChannel(ch)
-	// 往cha这个通道里发送数据
+	// 往ch这个通道里发送数据
+
 	ch <- a
+
+	//关闭channel
+	close(ch)
 	// main这个goroutine在这里等待2秒
-	time.Sleep(2*time.Second)
+	time.Sleep(2 * time.Second)
 	fmt.Println("end")
 }

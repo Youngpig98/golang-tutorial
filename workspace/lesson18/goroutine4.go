@@ -3,20 +3,18 @@ package main
 import "fmt"
 import "time"
 
-
 func addData(ch chan int) {
 	/*
-	每3秒往通道ch里发送一次数据
+		每1秒往通道ch里发送一次数据
 	*/
 	size := cap(ch)
-	for i:=0; i<size; i++ {
+	for i := 0; i < size; i++ {
 		ch <- i
-		time.Sleep(3*time.Second)
+		time.Sleep(1 * time.Second)
 	}
 	// 数据发送完毕，关闭通道
 	close(ch)
 }
-
 
 func main() {
 	ch := make(chan int, 10)

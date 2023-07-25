@@ -4,8 +4,8 @@ import "fmt"
 
 func change1(param []int) {
 	param[0] = 100             // 这个会改变外部切片的值
-	param = append(param, 200) // append不会改变外部切片的值
-	fmt.Printf("The length of slice in change1 function is %d\n",len(param))
+	param = append(param, 200) // append不会改变外部切片的值，原因在于这里是param重新指向新的切片，而不是外部的slice对象
+	fmt.Printf("The length of slice in change1 function is %d\n", len(param))
 }
 
 func change2(param *[]int) {
@@ -17,7 +17,7 @@ func main() {
 	fmt.Println(slice) // [0, 0]
 
 	change1(slice)
-	fmt.Printf("The length of slice processed by change1 function is %d\n",len(slice))
+	fmt.Printf("The length of slice processed by change1 function is %d\n", len(slice))
 	fmt.Println(slice) // [100, 0]
 
 	change2(&slice)
