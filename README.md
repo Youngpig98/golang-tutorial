@@ -66,6 +66,8 @@
 
 * [lesson31: go相关命令](./workspace/lesson31)
 
+* [lesson32: go模糊测试](./workspace/lesson32)
+
   
 
 ## 进阶篇
@@ -73,6 +75,7 @@
 - 常用关键字
   - [new和make的使用区别和最佳实践是什么？](./workspace/senior/p18)
   - [被defer的函数一定会执行么？](./workspace/senior/p3)
+  - [receive-only channel和send-only channel的争议](./workspace/senior/p23)
 
 
 * 语言基础
@@ -81,6 +84,10 @@
   * [一文读懂Go匿名结构体的使用场景](./workspace/senior/p15)
   * [Go语言中命名函数参数和命名函数返回值的注意事项](./workspace/senior/p16)
   * [golang协程与线程区别简要介绍](./workspace/senior/p22)
+* Go开发中的常见错误
+
+  * 
+
 * 设计模式
   * Idioms
     * [Functional Options](./workspace/senior/p8)
