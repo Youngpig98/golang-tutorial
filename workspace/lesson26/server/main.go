@@ -15,6 +15,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 	go func() {
 		// do something
+		//5秒超时了，要在3秒内完成
 		time.Sleep(5 * time.Second)
 		complete <- struct{}{}
 	}()

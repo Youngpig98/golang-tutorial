@@ -26,7 +26,7 @@ func main() {
 	ctx, cancel := context.WithCancel(ctx)
 
 	go func() {
-		time.Sleep(2 * time.Second)
+		time.Sleep(6 * time.Second)
 		cancel()
 	}()
 

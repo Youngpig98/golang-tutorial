@@ -12,12 +12,12 @@ var wg sync.WaitGroup
 // 多个goroutine并发读写sum，有并发冲突，最终计算得到的sum值是不准确的
 func test1() {
 	var sum int32 = 0
-	N := 100
+	N := 100000
 	wg.Add(N)
 	for i := 0; i < N; i++ {
 		go func(i int32) {
+			defer wg.Done()
 			sum += i
-			wg.Done()
 		}(int32(i))
 	}
 	wg.Wait()
@@ -27,7 +27,7 @@ func test1() {
 // 使用原子操作计算sum，没有并发冲突，最终计算得到sum的值是准确的
 func test2() {
 	var sum int32 = 0
-	N := 100
+	N := 100000
 	wg.Add(N)
 	for i := 0; i < N; i++ {
 		go func(i int32) {
