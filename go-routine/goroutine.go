@@ -9,11 +9,13 @@ import (
 )
 
 func say(id string) {
+
+	defer wg.Done()
+
 	time.Sleep(time.Second)
 
 	fmt.Println("I am done! id: " + id)
 
-	wg.Done()
 }
 
 func player(name string, ch chan int) {
@@ -39,7 +41,6 @@ func player(name string, ch chan int) {
 		fmt.Printf("%s receives ball %d\n", name, ball)
 		ch <- ball
 
-		
 	}
 }
 
@@ -47,7 +48,7 @@ var wg sync.WaitGroup
 
 func main() {
 
-	wg.Add(4) //  2 jobs to finish
+	wg.Add(2) //  2 jobs to finish
 
 	//go func(id string) {
 	//	fmt.Println(id)
@@ -66,12 +67,12 @@ func main() {
 
 	ch <- 0
 
-	raceCondition()
+	//raceCondition()
 
 	wg.Wait() // wait for all jobs to be finished
 
-	fmt.Println(counter)
-	fmt.Println(<-ch2)
+	//fmt.Println(counter)
+	//fmt.Println(<-ch2)
 }
 
 var counter int32
