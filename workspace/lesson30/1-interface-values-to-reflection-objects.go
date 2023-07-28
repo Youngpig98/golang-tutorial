@@ -5,13 +5,13 @@ import (
 	"reflect"
 )
 
-func printMeta(obj interface{}) {
+func printMeta(obj any) {
 	// pair: <value, type>
 	t := reflect.TypeOf(obj)
-	n := t.Name()
-	k := t.Kind()
-	v := reflect.ValueOf(obj)
-	fmt.Printf("Type: %s Type.Name: %s Kind: %s Value: %v\n", t, n, k, v)
+	name := t.Name()
+	kind := t.Kind()
+	value := reflect.ValueOf(obj)
+	fmt.Printf("Type: %s Type.Name: %s Kind: %s Value: %v\n", t, name, kind, value)
 }
 
 type handler func(int, int) int

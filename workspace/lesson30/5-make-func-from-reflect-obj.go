@@ -20,14 +20,18 @@ func makeTimeFunc(f interface{}) interface{} {
 		fmt.Printf("The function takes %v\n", end.Sub(start))
 		return result
 	})
-	return wrapper.Interface()
+	return wrapper.Interface() //相当于valueof的反向操作
 }
 
-func TimeMe() {
-	time.Sleep(1 * time.Second)
+func TimeMe(str string) (i int64) {
+	fmt.Println("Doing something", str)
+	time.Sleep(4 * time.Second)
+	fmt.Println("finished")
+	return 32
 }
 
 func main() {
-	timedFunc := makeTimeFunc(TimeMe).(func())
-	timedFunc()
+	timedFunc := makeTimeFunc(TimeMe).(func(string) int64)
+	i := timedFunc("hello")
+	fmt.Println(i)
 }
