@@ -5,10 +5,10 @@ import (
 	"time"
 )
 
-//当在执行某个goroutine的同时，需要等待该goroutine结束后再执行下面的逻辑代码，但我们又需要同时执行一些特定操作时，可以考虑使用for select
-//然而，这样一来大量的fo select语句会充斥在我们的业务代码中
-//所以，我们可以考虑使用stopCh
-// BackOffUntil：  goroutine 启停函数           fn的函数参数可以根据需求进行改变
+// BackOffUntil 当在执行某个goroutine的同时，需要等待该goroutine结束后再执行下面的逻辑代码，但我们又需要同时执行一些特定操作时，可以考虑使用for select
+// 然而，这样一来大量的for select语句会充斥在我们的业务代码中
+// 所以，我们可以考虑使用stopCh
+// goroutine 启停函数      fn的函数参数可以根据需求进行改变
 func BackOffUntil(stopCh chan struct{}, fn func()) {
 	//经典 for select范式
 	for {
@@ -25,16 +25,12 @@ func BackOffUntil(stopCh chan struct{}, fn func()) {
 	}
 }
 
-
-//定义一个公用的业务逻辑，在BackOffUntil中执行
-func fn()  {
+// 定义一个公用的业务逻辑，在BackOffUntil中执行
+func fn() {
 	fmt.Println("fn run")
 }
 
-
 func main() {
-
-
 
 	stopCh := make(chan struct{})
 
@@ -48,8 +44,7 @@ func main() {
 	}(stopCh)
 
 	//会阻塞
-	BackOffUntil(stopCh,fn)
-
+	BackOffUntil(stopCh, fn)
 
 	stopCh2 := make(chan struct{})
 
@@ -62,6 +57,5 @@ func main() {
 		}
 	}(stopCh2)
 
-
-	BackOffUntil(stopCh2,fn)
+	BackOffUntil(stopCh2, fn)
 }
